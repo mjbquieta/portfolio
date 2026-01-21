@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useScrollReveal } from "../../composables/useScrollReveal";
+import SkillsRadar from "../common/SkillsRadar.vue";
 
 const { isVisible, setTarget } = useScrollReveal();
 
@@ -17,131 +18,147 @@ const categories = [
   { id: "ai", label: "AI/ML" },
 ];
 
+// Core skills for radar chart (10-12 works best visually)
+// Level is now 0-100 for more precise representation
+const radarSkills = [
+  { name: "TypeScript", icon: "devicon-typescript-plain", level: 95 },
+  { name: "Vue.js", icon: "devicon-vuejs-plain", level: 80 },
+  { name: "React", icon: "devicon-react-original", level: 80 },
+  { name: "Node.js", icon: "devicon-nodejs-plain", level: 90 },
+  { name: "NestJS", icon: "devicon-nestjs-original", level: 90 },
+  { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark", level: 90 },
+  { name: "Docker", icon: "devicon-docker-plain", level: 85 },
+  { name: "Kubernetes", icon: "devicon-kubernetes-plain", level: 60 },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain", level: 85 },
+  { name: "Tailwind", icon: "devicon-tailwindcss-original", level: 85 },
+];
+
+// All skills with 0-100 levels
 const skills = [
   {
     name: "JS/TS",
     icon: "devicon-typescript-plain",
-    level: 5,
+    level: 95,
     category: "frontend",
   },
   {
     name: "Vue.js/Nuxt.js",
     icon: "devicon-vuejs-plain",
-    level: 5,
+    level: 95,
     category: "frontend",
   },
   {
     name: "Next.js/React",
     icon: "devicon-react-original",
-    level: 4,
+    level: 80,
     category: "frontend",
   },
   {
     name: "Tailwind CSS",
     icon: "devicon-tailwindcss-original",
-    level: 5,
+    level: 95,
     category: "frontend",
   },
   {
     name: "React Native",
     icon: "devicon-react-original",
-    level: 4,
+    level: 80,
     category: "mobile",
   },
   {
     name: "NativeWind",
     icon: "devicon-tailwindcss-original",
-    level: 4,
+    level: 85,
     category: "mobile",
   },
   {
     name: "NestJS",
     icon: "devicon-nestjs-original",
-    level: 5,
+    level: 90,
     category: "backend",
   },
   {
     name: "Java/Scala",
     icon: "devicon-java-plain",
-    level: 4,
+    level: 75,
     category: "backend",
   },
   {
     name: "Node.js",
     icon: "devicon-nodejs-plain",
-    level: 5,
+    level: 90,
     category: "backend",
   },
   {
     name: "AWS",
     icon: "devicon-amazonwebservices-plain-wordmark",
-    level: 5,
+    level: 85,
     category: "cloud",
   },
   {
     name: "Google Cloud",
     icon: "devicon-googlecloud-plain",
-    level: 4,
+    level: 75,
     category: "cloud",
   },
   {
     name: "Docker",
     icon: "devicon-docker-plain",
-    level: 5,
+    level: 90,
     category: "devops",
   },
   {
     name: "Kubernetes",
     icon: "devicon-kubernetes-plain",
-    level: 4,
+    level: 70,
     category: "devops",
   },
   {
     name: "CI/CD Pipelines",
     icon: "devicon-githubactions-plain",
-    level: 5,
+    level: 90,
     category: "devops",
   },
   {
     name: "Linux",
     icon: "devicon-linux-plain",
-    level: 5,
+    level: 90,
     category: "devops",
   },
   {
     name: "PostgreSQL",
     icon: "devicon-postgresql-plain",
-    level: 5,
+    level: 90,
     category: "database",
   },
   {
     name: "MongoDB",
     icon: "devicon-mongodb-plain",
-    level: 4,
+    level: 80,
     category: "database",
   },
   {
     name: "Supabase",
     icon: "devicon-supabase-plain",
-    level: 4,
+    level: 80,
     category: "database",
   },
   {
     name: "LLM Integration",
     icon: "devicon-tensorflow-original",
-    level: 4,
+    level: 75,
     category: "ai",
   },
   {
     name: "Pinecone DB",
     icon: "devicon-pytorch-original",
-    level: 4,
+    level: 75,
     category: "ai",
   },
   {
     name: "Prompt Engineering",
     icon: "devicon-jupyter-plain",
-    level: 4,
+    level: 80,
     category: "ai",
   },
 ];
@@ -167,6 +184,18 @@ const filteredSkills = computed(() => {
           11+ years of experience with a diverse tech stack, from frontend
           frameworks to cloud infrastructure.
         </p>
+      </div>
+
+      <!-- Radar Chart -->
+      <div class="radar-section">
+        <SkillsRadar :skills="radarSkills" title="Core Technologies" />
+      </div>
+
+      <!-- Section Separator -->
+      <div class="section-separator">
+        <span class="separator-line"></span>
+        <span class="separator-text">All Skills</span>
+        <span class="separator-line"></span>
       </div>
 
       <!-- Category Filter -->
@@ -273,6 +302,42 @@ const filteredSkills = computed(() => {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* Radar Section */
+.radar-section {
+  margin-bottom: 3rem;
+}
+
+/* Section Separator */
+.section-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.separator-line {
+  flex: 1;
+  max-width: 150px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border),
+    var(--color-primary),
+    var(--color-border),
+    transparent
+  );
+}
+
+.separator-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Category Filter */
