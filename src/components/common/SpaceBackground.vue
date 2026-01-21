@@ -9,11 +9,18 @@ interface Node {
 }
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
+const isMobile = ref(false)
+const MOBILE_BREAKPOINT = 768
+
 let animationId: number
 let nodes: Node[] = []
 const nodeCount = 80
 const connectionDistance = 150
 const nodeSpeed = 0.3
+
+function checkMobile() {
+  isMobile.value = window.innerWidth < MOBILE_BREAKPOINT
+}
 
 function initNodes(width: number, height: number) {
   nodes = []
@@ -29,7 +36,7 @@ function initNodes(width: number, height: number) {
 
 function animate() {
   const canvas = canvasRef.value
-  if (!canvas) return
+  if (!canvas || isMobile.value) return
 
   const ctx = canvas.getContext('2d')
   if (!ctx) return
@@ -103,8 +110,22 @@ function animate() {
 }
 
 function handleResize() {
+  checkMobile()
+
   const canvas = canvasRef.value
   if (!canvas) return
+
+  if (isMobile.value) {
+    // Clear canvas on mobile
+    const ctx = canvas.getContext('2d')
+    if (ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+    if (animationId) {
+      cancelAnimationFrame(animationId)
+    }
+    return
+  }
 
   const dpr = window.devicePixelRatio || 1
   const rect = canvas.getBoundingClientRect()
@@ -118,12 +139,16 @@ function handleResize() {
   }
 
   initNodes(rect.width, rect.height)
+  animate()
 }
 
 onMounted(() => {
+  checkMobile()
   handleResize()
   window.addEventListener('resize', handleResize)
-  animate()
+  if (!isMobile.value) {
+    animate()
+  }
 })
 
 onUnmounted(() => {
