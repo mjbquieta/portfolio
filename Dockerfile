@@ -21,26 +21,10 @@ FROM nginx:alpine AS production
 # Copy built assets from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy custom nginx config for SPA routing
-COPY <<EOF /etc/nginx/conf.d/default.conf
-server {
-    listen 80;
-    server_name localhost;
-    root /usr/share/nginx/html;
-    index index.html;
+# Remove default nginx config and copy custom config
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.portfolio.conf /etc/nginx/conf.d/default.conf
 
-    location / {
-        try_files \$uri \$uri/ /index.html;
-    }
-
-    # Cache static assets
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-}
-EOF
-
-EXPOSE 80
+EXPOSE 3002
 
 CMD ["nginx", "-g", "daemon off;"]
