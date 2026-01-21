@@ -224,6 +224,12 @@ const filteredSkills = computed(() => {
               <i :class="skill.icon"></i>
             </div>
             <span class="skill-name">{{ skill.name }}</span>
+            <div class="skill-level-bar">
+              <div
+                class="skill-level-fill"
+                :style="{ width: `${skill.level}%` }"
+              ></div>
+            </div>
           </div>
         </TransitionGroup>
       </div>
@@ -385,8 +391,8 @@ const filteredSkills = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 1rem;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem 1rem;
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
   border-radius: 16px;
@@ -428,6 +434,27 @@ const filteredSkills = computed(() => {
   font-weight: 600;
   color: var(--color-text);
   line-height: 1.3;
+}
+
+/* Skill Level Bar */
+.skill-level-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--color-bg-hover);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.skill-level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), #06b6d4);
+  border-radius: 2px;
+  transition: width 0.6s ease-out;
+}
+
+.skill-card:hover .skill-level-fill {
+  filter: brightness(1.1);
 }
 
 /* Transition animations */
@@ -526,6 +553,10 @@ const filteredSkills = computed(() => {
 
   .skill-name {
     font-size: 0.75rem;
+  }
+
+  .skill-level-bar {
+    height: 3px;
   }
 
   .category-filter {
