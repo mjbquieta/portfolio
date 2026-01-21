@@ -48,6 +48,30 @@ const projects = ref(
       liveUrl: null,
       githubUrl: "https://github.com/mjbquieta/badminton-mobile-app",
     },
+    {
+      title: "Timely",
+      description:
+        "Timely connects to your biometric devices fingerprint scanners, face recognition, and RFID readers to automatically track when employees clock in and out.",
+      technologies: [
+        "NestJS",
+        "PostgreSQL",
+        "Tailwind",
+        "Nuxt",
+        "Docker",
+        "Nginx",
+      ],
+      image: "/images/timely.png",
+      category: "WEB APP",
+      featured: true,
+      highlights: [
+        "Secure biometric authentication ensures only the right person clocks in. No more buddy punching.",
+        "Just show your face and you're clocked in. Fast, contactless, and incredibly accurate.",
+        "Tap your card and go. Simple, reliable, and perfect for high-traffic workplaces.",
+        "See who's at work right now. Track patterns, identify issues, and make informed decisions.",
+      ],
+      liveUrl: null,
+      githubUrl: "https://github.com/mjbquieta/timely",
+    },
   ].map((project) => ({ id: crypto.randomUUID(), ...project })),
 );
 
