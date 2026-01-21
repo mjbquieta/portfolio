@@ -14,7 +14,7 @@ const projects = ref(
         "A simple and intuitive personal finance app that helps you track multiple income sources, monitor your spending, and build budgets that work for you.",
       technologies: ["NestJS", "PostgreSQL", "Nuxt", "Docker", "Nginx"],
       image: "/images/prospera.png",
-      category: "MONEY TRACKER",
+      category: "WEB APP",
       featured: true,
       highlights: [
         "Track income from multiple sources",

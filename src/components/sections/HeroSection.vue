@@ -10,7 +10,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    url: "https://linkedin.com/in/mjbquieta",
+    url: "https://www.linkedin.com/in/michaelquieta",
   },
 ];
 
@@ -121,7 +121,10 @@ onMounted(() => {
           </a>
 
           <!-- Email dropdown -->
-          <div class="email-dropdown-container" @mouseleave="closeEmailDropdown">
+          <div
+            class="email-dropdown-container"
+            @mouseleave="closeEmailDropdown"
+          >
             <button
               class="social-link email-trigger"
               @click="toggleEmailDropdown"

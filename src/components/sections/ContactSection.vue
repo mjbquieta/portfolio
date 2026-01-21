@@ -37,7 +37,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    url: "https://linkedin.com/in/mjbquieta",
+    url: "https://www.linkedin.com/in/michaelquieta",
   },
 ];
 
@@ -204,10 +204,17 @@ const handleSubmit = async () => {
             <button
               type="submit"
               class="submit-btn"
-              :class="{ submitting: isSubmitting, submitted: isSubmitted, error: submitError }"
+              :class="{
+                submitting: isSubmitting,
+                submitted: isSubmitted,
+                error: submitError,
+              }"
               :disabled="isSubmitting || isSubmitted"
             >
-              <span class="btn-text" v-if="!isSubmitting && !isSubmitted && !submitError">
+              <span
+                class="btn-text"
+                v-if="!isSubmitting && !isSubmitted && !submitError"
+              >
                 Send Message
                 <svg
                   width="20"

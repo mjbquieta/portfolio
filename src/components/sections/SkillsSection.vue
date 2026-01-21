@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useScrollReveal } from "../../composables/useScrollReveal";
-import SkillIcons from "../icons/SkillIcons.vue";
 
 const { isVisible, setTarget } = useScrollReveal();
 
@@ -10,6 +9,7 @@ const activeCategory = ref<string>("all");
 const categories = [
   { id: "all", label: "All Skills" },
   { id: "frontend", label: "Frontend" },
+  { id: "mobile", label: "Mobile" },
   { id: "backend", label: "Backend" },
   { id: "cloud", label: "Cloud" },
   { id: "devops", label: "DevOps" },
@@ -19,39 +19,137 @@ const categories = [
 
 const skills = [
   {
-    name: "JavaScript/TypeScript",
-    icon: "typescript",
+    name: "JS/TS",
+    icon: "devicon-typescript-plain",
     level: 5,
     category: "frontend",
   },
-  { name: "Vue.js/Nuxt.js", icon: "vue", level: 5, category: "frontend" },
-  { name: "Next.js/React", icon: "vue", level: 4, category: "frontend" },
-  { name: "NestJS", icon: "nestjs", level: 5, category: "backend" },
-  { name: "Java/Scala", icon: "java", level: 4, category: "backend" },
-  { name: "Node.js", icon: "typescript", level: 5, category: "backend" },
-  { name: "AWS", icon: "aws", level: 5, category: "cloud" },
-  { name: "Google Cloud", icon: "gcp", level: 4, category: "cloud" },
-  { name: "Docker", icon: "docker", level: 5, category: "devops" },
-  { name: "Kubernetes", icon: "kubernetes", level: 4, category: "devops" },
-  { name: "CI/CD Pipelines", icon: "devops", level: 5, category: "devops" },
-  { name: "Linux", icon: "linux", level: 5, category: "devops" },
-  { name: "PostgreSQL", icon: "database", level: 5, category: "database" },
-  { name: "MongoDB", icon: "database", level: 4, category: "database" },
-  { name: "Supabase", icon: "database", level: 4, category: "database" },
-  { name: "AI/LLM Integration", icon: "ai", level: 4, category: "ai" },
-  { name: "Pinecone DB", icon: "ai", level: 4, category: "ai" },
-  { name: "Prompt Engineering", icon: "ai", level: 4, category: "ai" },
+  {
+    name: "Vue.js/Nuxt.js",
+    icon: "devicon-vuejs-plain",
+    level: 5,
+    category: "frontend",
+  },
+  {
+    name: "Next.js/React",
+    icon: "devicon-react-original",
+    level: 4,
+    category: "frontend",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "devicon-tailwindcss-original",
+    level: 5,
+    category: "frontend",
+  },
+  {
+    name: "React Native",
+    icon: "devicon-react-original",
+    level: 4,
+    category: "mobile",
+  },
+  {
+    name: "NativeWind",
+    icon: "devicon-tailwindcss-original",
+    level: 4,
+    category: "mobile",
+  },
+  {
+    name: "NestJS",
+    icon: "devicon-nestjs-original",
+    level: 5,
+    category: "backend",
+  },
+  {
+    name: "Java/Scala",
+    icon: "devicon-java-plain",
+    level: 4,
+    category: "backend",
+  },
+  {
+    name: "Node.js",
+    icon: "devicon-nodejs-plain",
+    level: 5,
+    category: "backend",
+  },
+  {
+    name: "AWS",
+    icon: "devicon-amazonwebservices-plain-wordmark",
+    level: 5,
+    category: "cloud",
+  },
+  {
+    name: "Google Cloud",
+    icon: "devicon-googlecloud-plain",
+    level: 4,
+    category: "cloud",
+  },
+  {
+    name: "Docker",
+    icon: "devicon-docker-plain",
+    level: 5,
+    category: "devops",
+  },
+  {
+    name: "Kubernetes",
+    icon: "devicon-kubernetes-plain",
+    level: 4,
+    category: "devops",
+  },
+  {
+    name: "CI/CD Pipelines",
+    icon: "devicon-githubactions-plain",
+    level: 5,
+    category: "devops",
+  },
+  {
+    name: "Linux",
+    icon: "devicon-linux-plain",
+    level: 5,
+    category: "devops",
+  },
+  {
+    name: "PostgreSQL",
+    icon: "devicon-postgresql-plain",
+    level: 5,
+    category: "database",
+  },
+  {
+    name: "MongoDB",
+    icon: "devicon-mongodb-plain",
+    level: 4,
+    category: "database",
+  },
+  {
+    name: "Supabase",
+    icon: "devicon-supabase-plain",
+    level: 4,
+    category: "database",
+  },
+  {
+    name: "LLM Integration",
+    icon: "devicon-tensorflow-original",
+    level: 4,
+    category: "ai",
+  },
+  {
+    name: "Pinecone DB",
+    icon: "devicon-pytorch-original",
+    level: 4,
+    category: "ai",
+  },
+  {
+    name: "Prompt Engineering",
+    icon: "devicon-jupyter-plain",
+    level: 4,
+    category: "ai",
+  },
 ];
 
 const filteredSkills = computed(() => {
   if (activeCategory.value === "all") return skills;
   return skills.filter((skill) => skill.category === activeCategory.value);
 });
-
-const getLevelLabel = (level: number): string => {
-  const labels = ["", "Basic", "Intermediate", "Advanced", "Expert", "Master"];
-  return labels[level] || "";
-};
 </script>
 
 <template>
@@ -91,33 +189,12 @@ const getLevelLabel = (level: number): string => {
             v-for="(skill, index) in filteredSkills"
             :key="skill.name"
             class="skill-card"
-            :style="{ '--delay': `${index * 0.05}s` }"
+            :style="{ '--delay': `${index * 0.03}s` }"
           >
             <div class="skill-icon-wrapper">
-              <SkillIcons :icon="skill.icon" :size="48" />
+              <i :class="skill.icon"></i>
             </div>
-
-            <div class="skill-info">
-              <h3 class="skill-name">{{ skill.name }}</h3>
-              <span class="skill-level">{{ getLevelLabel(skill.level) }}</span>
-            </div>
-
-            <!-- Skill level indicator -->
-            <div class="skill-meter">
-              <div
-                class="skill-meter-fill"
-                :style="{ width: `${skill.level * 20}%` }"
-              >
-                <div class="meter-glow"></div>
-              </div>
-            </div>
-
-            <!-- Decorative elements -->
-            <div class="card-decoration">
-              <span class="decoration-dot"></span>
-              <span class="decoration-dot"></span>
-              <span class="decoration-dot"></span>
-            </div>
+            <span class="skill-name">{{ skill.name }}</span>
           </div>
         </TransitionGroup>
       </div>
@@ -234,107 +311,58 @@ const getLevelLabel = (level: number): string => {
 /* Skills Grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
   margin-bottom: 4rem;
 }
 
 .skill-card {
-  position: relative;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
-  border-radius: 20px;
+  border-radius: 16px;
   transition: all 0.3s ease;
-  animation: fadeInUp 0.5s ease backwards;
+  animation: fadeInUp 0.4s ease backwards;
   animation-delay: var(--delay);
-  overflow: hidden;
+  text-align: center;
 }
 
 .skill-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-primary);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .skill-card:hover .skill-icon-wrapper {
-  transform: scale(1.1) rotate(-5deg);
+  transform: scale(1.1);
 }
 
 .skill-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
-  margin-bottom: 1rem;
+  width: 48px;
+  height: 48px;
   background: var(--color-bg-hover);
-  border-radius: 16px;
+  border-radius: 12px;
   color: var(--color-primary);
   transition: transform 0.3s ease;
 }
 
-.skill-info {
-  margin-bottom: 1rem;
+.skill-icon-wrapper i {
+  font-size: 28px;
+  color: var(--color-primary);
 }
 
 .skill-name {
-  font-size: 1.125rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 0.25rem;
-}
-
-.skill-level {
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
-  font-weight: 500;
-}
-
-/* Skill Meter */
-.skill-meter {
-  height: 6px;
-  background: var(--color-bg-hover);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.skill-meter-fill {
-  height: 100%;
-  background: var(--color-gradient);
-  border-radius: 10px;
-  position: relative;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.meter-glow {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: var(--color-primary);
-  border-radius: 50%;
-  filter: blur(8px);
-  opacity: 0.6;
-}
-
-/* Card Decoration */
-.card-decoration {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 4px;
-  opacity: 0.3;
-}
-
-.decoration-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--color-text);
-  border-radius: 50%;
+  line-height: 1.3;
 }
 
 /* Transition animations */
@@ -414,7 +442,25 @@ const getLevelLabel = (level: number): string => {
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .skill-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-icon-wrapper i {
+    font-size: 24px;
+  }
+
+  .skill-name {
+    font-size: 0.75rem;
   }
 
   .category-filter {

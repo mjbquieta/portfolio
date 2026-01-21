@@ -1,67 +1,81 @@
 <script setup lang="ts">
-import { useScrollReveal } from '../../composables/useScrollReveal'
+import { useScrollReveal } from "../../composables/useScrollReveal";
 
-const { isVisible, setTarget } = useScrollReveal()
+const { isVisible, setTarget } = useScrollReveal();
 
 const timeline = [
   {
-    period: '2023 - Present',
-    role: 'Full Stack Developer / DevSecOps',
-    company: 'HealthcareGPS Inc.',
-    description: 'Building AI-powered healthcare platforms integrating LLMs and vector databases (Pinecone) for intelligent health plan recommendations. Implementing RAG pipelines, prompt engineering, and ensuring HIPAA-compliant AI solutions with NestJS and PostgreSQL.'
+    period: "2023 - Present",
+    role: "Full Stack Developer / DevSecOps",
+    company: "HealthcareGPS Inc.",
+    description:
+      "Building AI-powered healthcare platforms integrating LLMs and vector databases (Pinecone) for intelligent health plan recommendations. Implementing RAG pipelines, prompt engineering, and ensuring HIPAA-compliant AI solutions with NestJS and PostgreSQL.",
   },
   {
-    period: '2023 - 2024',
-    role: 'Full Stack Developer / AWS Cloud Engineer',
-    company: 'YourWayHome LLC',
-    description: 'Architected cloud solutions on AWS, implemented CI/CD pipelines, and migrated legacy applications with zero downtime.'
+    period: "2023 - 2024",
+    role: "Full Stack Developer / AWS Cloud Engineer",
+    company: "YourWayHome LLC",
+    description:
+      "Architected cloud solutions on AWS, implemented CI/CD pipelines, and migrated legacy applications with zero downtime.",
   },
   {
-    period: '2016 - 2023',
-    role: 'Software Engineer / Senior DevOps',
-    company: 'Vauldex Technologies Inc.',
-    description: 'Led full-stack development using Scala, Java, VueJS, and implemented serverless architecture across AWS and GCP.'
+    period: "2016 - 2023",
+    role: "Software Engineer / Senior DevOps",
+    company: "Vauldex Technologies Inc.",
+    description:
+      "Led full-stack development using Scala, Java, VueJS, and implemented serverless architecture across AWS and GCP.",
   },
   {
-    period: '2014 - 2016',
-    role: 'PHP Developer',
-    company: 'IXBASE',
-    description: 'Developed accounting and payroll solutions for cooperative banking with secure RESTful API integrations.'
-  }
-]
+    period: "2014 - 2016",
+    role: "PHP Developer",
+    company: "IXBASE",
+    description:
+      "Developed accounting and payroll solutions for cooperative banking with secure RESTful API integrations.",
+  },
+];
 </script>
 
 <template>
-  <section id="about" class="about-section" :ref="(el) => setTarget(el as HTMLElement)">
+  <section
+    id="about"
+    class="about-section"
+    :ref="(el) => setTarget(el as HTMLElement)"
+  >
     <div class="about-container" :class="{ visible: isVisible }">
       <div class="about-grid">
         <!-- About Content -->
         <div class="about-content">
           <span class="section-label">About Me</span>
-          <h2 class="section-title">Passionate About Building Smart Solutions</h2>
+          <h2 class="section-title">
+            Passionate About Building Smart Solutions
+          </h2>
 
           <div class="about-text">
             <p>
               I'm Michael John, a senior full-stack software engineer based in
-              <strong>Cebu City, Philippines</strong>. With over <strong>11 years</strong> of
-              experience, I've had the opportunity to build systems that matter -
-              from healthcare platforms that help people find the right coverage,
-              to banking solutions that handle sensitive transactions securely.
+              <strong>Cebu City, Philippines</strong>. With over
+              <strong>11 years</strong> of experience, I've had the opportunity
+              to build systems that matter - from healthcare platforms that help
+              people find the right coverage, to banking solutions that handle
+              sensitive transactions securely.
             </p>
 
             <p>
-              My journey started with PHP and has evolved through Java, Scala, and now
-              modern TypeScript/JavaScript ecosystems. I also build cross-platform mobile
-              applications using <strong>React Native</strong>. I believe in writing code that's
+              My journey started with PHP and has evolved through Java, Scala,
+              and now modern TypeScript/JavaScript ecosystems. I also build
+              cross-platform mobile applications using
+              <strong>React Native</strong>. I believe in writing code that's
               not just functional, but maintainable, secure, and scalable.
             </p>
 
             <p>
-              Currently, I'm deeply involved in implementing <strong>AI and LLM solutions</strong>
-              for healthcare applications - building RAG pipelines, working with vector databases,
-              and creating intelligent systems that help people navigate complex health decisions.
-              I'm passionate about DevSecOps practices, cloud technologies, and building systems
-              that developers love to work with.
+              Currently, I'm deeply involved in implementing
+              <strong>AI and LLM solutions</strong>
+              for healthcare applications - building RAG pipelines, working with
+              vector databases, and creating intelligent systems that help
+              people navigate complex health decisions. I'm passionate about
+              DevSecOps practices, cloud technologies, and building systems that
+              developers love to work with.
             </p>
           </div>
 
@@ -69,9 +83,14 @@ const timeline = [
           <div class="about-traits">
             <div class="trait">
               <span class="trait-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22 4 12 14.01 9 11.01"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </span>
               <div class="trait-info">
@@ -81,8 +100,13 @@ const timeline = [
             </div>
             <div class="trait">
               <span class="trait-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </span>
               <div class="trait-info">
@@ -92,10 +116,17 @@ const timeline = [
             </div>
             <div class="trait">
               <span class="trait-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  />
                 </svg>
               </span>
               <div class="trait-info">
@@ -105,9 +136,14 @@ const timeline = [
             </div>
             <div class="trait">
               <span class="trait-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                  <line x1="12" y1="18" x2="12.01" y2="18"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
                 </svg>
               </span>
               <div class="trait-info">
@@ -116,6 +152,11 @@ const timeline = [
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Section Separator (visible on mobile) -->
+        <div class="section-separator mobile-only">
+          <span class="separator-line"></span>
         </div>
 
         <!-- Experience Timeline -->
@@ -131,7 +172,10 @@ const timeline = [
             >
               <div class="timeline-marker">
                 <span class="marker-dot"></span>
-                <span class="marker-line" v-if="index < timeline.length - 1"></span>
+                <span
+                  class="marker-line"
+                  v-if="index < timeline.length - 1"
+                ></span>
               </div>
 
               <div class="timeline-content">
@@ -145,8 +189,13 @@ const timeline = [
         </div>
       </div>
 
+      <!-- Section Separator -->
+      <div class="section-separator full-width">
+        <span class="separator-line"></span>
+      </div>
+
       <!-- Education -->
-      <div class="education-section">
+      <!-- <div class="education-section">
         <h3 class="education-title">Education</h3>
         <div class="education-card">
           <div class="education-icon">
@@ -161,7 +210,7 @@ const timeline = [
             <span class="education-year">2009 - 2014</span>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -177,7 +226,9 @@ const timeline = [
   margin: 0 auto;
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .about-container.visible {
@@ -197,6 +248,47 @@ const timeline = [
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+}
+
+/* Section Separator */
+.section-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.separator-line {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border),
+    var(--color-primary),
+    var(--color-border),
+    transparent
+  );
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-only {
+    display: flex;
+  }
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.full-width .separator-line {
+  max-width: 400px;
 }
 
 /* Section Label & Title */
@@ -335,7 +427,9 @@ const timeline = [
   height: 14px;
   background: var(--color-gradient);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-primary);
+  box-shadow:
+    0 0 0 4px var(--color-bg),
+    0 0 0 6px var(--color-primary);
 }
 
 .marker-line {
