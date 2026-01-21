@@ -12,7 +12,14 @@ const projects = ref(
       title: "Prospera",
       description:
         "A simple and intuitive personal finance app that helps you track multiple income sources, monitor your spending, and build budgets that work for you.",
-      technologies: ["NestJS", "PostgreSQL", "Nuxt", "Docker", "Nginx"],
+      technologies: [
+        "NestJS",
+        "PostgreSQL",
+        "Tailwind",
+        "Nuxt",
+        "Docker",
+        "Nginx",
+      ],
       image: "/images/prospera.png",
       category: "WEB APP",
       featured: true,
@@ -70,8 +77,8 @@ const getCategoryColor = (category: string): string => {
         <span class="section-label">Portfolio</span>
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-description">
-          A selection of projects showcasing my experience across healthcare,
-          AI, cloud infrastructure, and fintech.
+          A selection of personal and side projects I've built to explore new
+          technologies and solve real-world problems.
         </p>
       </div>
 

@@ -79,8 +79,8 @@ onMounted(() => {
         <p class="hero-description">
           Senior full-stack and mobile engineer with 11+ years building scalable
           systems across <strong>healthcare</strong>, <strong>banking</strong>,
-          <strong>blockchain</strong>, and <strong>AI platforms</strong>.
-          Turning complex problems into elegant solutions.
+          and <strong>AI platforms</strong>. Turning complex problems into
+          elegant solutions.
         </p>
 
         <!-- CTA Buttons -->

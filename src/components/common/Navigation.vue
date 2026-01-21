@@ -1,48 +1,55 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import ThemeToggle from './ThemeToggle.vue'
+import { ref, onMounted, onUnmounted } from "vue";
+import ThemeToggle from "./ThemeToggle.vue";
 
-const isScrolled = ref(false)
-const isMobileMenuOpen = ref(false)
+const isScrolled = ref(false);
+const isMobileMenuOpen = ref(false);
 
 const navItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' }
-]
+  { label: "Home", href: "#hero" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
-}
+  isScrolled.value = window.scrollY > 50;
+};
 
 const scrollToSection = (href: string) => {
-  const element = document.querySelector(href)
+  const element = document.querySelector(href);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
-    isMobileMenuOpen.value = false
+    element.scrollIntoView({ behavior: "smooth" });
+    isMobileMenuOpen.value = false;
   }
-}
+};
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
-}
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
+  window.addEventListener("scroll", handleScroll, { passive: true });
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
-  <nav class="navigation" :class="{ scrolled: isScrolled, 'menu-open': isMobileMenuOpen }">
+  <nav
+    class="navigation"
+    :class="{ scrolled: isScrolled, 'menu-open': isMobileMenuOpen }"
+  >
     <div class="nav-container">
       <!-- Logo / Name -->
-      <a href="#hero" class="nav-logo" @click.prevent="scrollToSection('#hero')">
+      <a
+        href="#hero"
+        class="nav-logo"
+        @click.prevent="scrollToSection('#hero')"
+      >
         <span class="logo-icon">MJ</span>
         <span class="logo-text">Michael John</span>
       </a>
@@ -83,7 +90,11 @@ onUnmounted(() => {
     <!-- Mobile Navigation -->
     <div class="mobile-nav" :class="{ open: isMobileMenuOpen }">
       <ul class="mobile-nav-links">
-        <li v-for="(item, index) in navItems" :key="item.href" :style="{ '--delay': `${index * 0.1}s` }">
+        <li
+          v-for="(item, index) in navItems"
+          :key="item.href"
+          :style="{ '--delay': `${index * 0.1}s` }"
+        >
           <a
             :href="item.href"
             class="mobile-nav-link"
@@ -105,7 +116,10 @@ onUnmounted(() => {
   right: 0;
   z-index: 1000;
   padding: 1rem 0;
-  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    padding 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .navigation.scrolled {
@@ -151,7 +165,9 @@ onUnmounted(() => {
   font-size: 1rem;
   font-weight: 800;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .nav-logo:hover .logo-icon {
@@ -188,7 +204,9 @@ onUnmounted(() => {
   font-size: 0.9375rem;
   font-weight: 500;
   border-radius: 8px;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
 .nav-link:hover {
@@ -197,7 +215,7 @@ onUnmounted(() => {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 4px;
   left: 50%;
@@ -254,7 +272,9 @@ onUnmounted(() => {
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .mobile-menu-btn.active .line:nth-child(1) {
@@ -280,7 +300,9 @@ onUnmounted(() => {
   padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.4s ease;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
@@ -298,7 +320,9 @@ onUnmounted(() => {
 .mobile-nav-links li {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   transition-delay: var(--delay);
 }
 
@@ -315,7 +339,9 @@ onUnmounted(() => {
   font-size: 1.125rem;
   font-weight: 500;
   border-radius: 12px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .mobile-nav-link:hover {
