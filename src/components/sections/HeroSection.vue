@@ -617,5 +617,9 @@ onMounted(() => {
     width: 220px;
     height: 220px;
   }
+
+  .scroll-indicator {
+    display: none;
+  }
 }
 </style>
