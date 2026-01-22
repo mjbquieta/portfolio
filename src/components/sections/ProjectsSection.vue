@@ -69,7 +69,7 @@ const projects = ref(
         "Tap your card and go. Simple, reliable, and perfect for high-traffic workplaces.",
         "See who's at work right now. Track patterns, identify issues, and make informed decisions.",
       ],
-      liveUrl: null,
+      liveUrl: "http://18.140.69.62:81",
       githubUrl: "https://github.com/mjbquieta/timely",
     },
   ].map((project) => ({ id: crypto.randomUUID(), ...project })),
