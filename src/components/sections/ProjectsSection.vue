@@ -29,13 +29,21 @@ const projects = ref(
         "Create and manage personal budgets",
       ],
       liveUrl: "https://prospera.michaelquieta.com",
+      playStoreUrl: null,
       githubUrl: "https://github.com/mjbquieta/money-tracker",
     },
     {
       title: "Patatas",
       description:
         "A mobile app that manages badminton queues by tracking players and skill levels, creating fair matchups, and rotating players through courts to ensure balanced games and equal playing time.",
-      technologies: ["Typescript", "React-Native", "Expo", "Nativewind"],
+      technologies: [
+        "Typescript",
+        "React-Native",
+        "Expo",
+        "Nativewind",
+        "NextJS",
+        "Firebase",
+      ],
       image: "/images/badminton-patatas.png",
       category: "Mobile",
       featured: true,
@@ -45,7 +53,9 @@ const projects = ref(
         "Smart Queue - Automatically groups players (4 for doubles) with skill-level matching",
         "Real-time stats on players in game, in queue, on bench, and court availability",
       ],
-      liveUrl: null,
+      liveUrl: "https://badminton.michaelquieta.com",
+      playStoreUrl:
+        "https://expo.dev/accounts/kirkmicz26/projects/patatas/builds/ec30850c-9b18-4c82-ba0b-e37daad10052",
       githubUrl: "https://github.com/mjbquieta/badminton-mobile-app",
     },
     {
@@ -70,6 +80,7 @@ const projects = ref(
         "See who's at work right now. Track patterns, identify issues, and make informed decisions.",
       ],
       liveUrl: "https://timelyph.com",
+      playStoreUrl: null,
       githubUrl: "https://github.com/mjbquieta/timely",
     },
   ].map((project) => ({ id: crypto.randomUUID(), ...project })),
@@ -133,7 +144,9 @@ const getCategoryColor = (category: string): string => {
             </span>
             <div
               class="card-actions"
-              v-if="project.liveUrl || project.githubUrl"
+              v-if="
+                project.liveUrl || project.githubUrl || project.playStoreUrl
+              "
             >
               <a
                 v-if="project.githubUrl"
@@ -144,6 +157,16 @@ const getCategoryColor = (category: string): string => {
                 aria-label="View on GitHub"
               >
                 <SocialIcons icon="github" :size="18" />
+              </a>
+              <a
+                v-if="project.playStoreUrl"
+                :href="project.playStoreUrl"
+                class="action-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View on Play Store"
+              >
+                <SocialIcons icon="playstore" :size="18" />
               </a>
               <a
                 v-if="project.liveUrl"
