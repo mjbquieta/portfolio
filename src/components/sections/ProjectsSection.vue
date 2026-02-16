@@ -55,7 +55,7 @@ const projects = ref(
       ],
       liveUrl: "https://badminton.michaelquieta.com",
       playStoreUrl:
-        "https://expo.dev/accounts/kirkmicz26/projects/patatas/builds/ec30850c-9b18-4c82-ba0b-e37daad10052",
+        "https://drive.google.com/file/d/1_Flhsi1tRku0Q2M7B-aiiieVXCMKDtSm/view?usp=sharing",
       githubUrl: "https://github.com/mjbquieta/badminton-mobile-app",
     },
     {
