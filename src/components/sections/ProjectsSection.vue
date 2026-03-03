@@ -33,27 +33,31 @@ const projects = ref(
       githubUrl: "https://github.com/mjbquieta/money-tracker",
     },
     {
-      title: "Patatas",
+      title: "RallyUp",
       description:
-        "A mobile app that manages badminton queues by tracking players and skill levels, creating fair matchups, and rotating players through courts to ensure balanced games and equal playing time.",
+        "A court management web app for racket and paddle sports — badminton, pickleball, table tennis, and more. It tracks players and skill levels, automates fair matchmaking, manages court rotations, and provides real-time analytics to keep sessions running smoothly.",
       technologies: [
-        "Typescript",
-        "React-Native",
-        "Expo",
-        "Nativewind",
-        "NextJS",
+        "TypeScript",
+        "React 19",
+        "Next.js 15",
+        "Tailwind CSS",
+        "Redux Toolkit",
         "Firebase",
+        "Turborepo",
       ],
-      image: "/images/badminton-patatas.png",
-      category: "Mobile",
+      image: "/images/rallyup.png",
+      category: "Web",
       featured: true,
       highlights: [
-        "Players - Add players with skill levels (Beginner → Pro), track game counts",
-        "Courts - Create/manage multiple courts for singles or doubles play",
-        "Smart Queue - Automatically groups players (4 for doubles) with skill-level matching",
-        "Real-time stats on players in game, in queue, on bench, and court availability",
+        "Player Management — Add players with skill levels (Beginner → Pro), track stats, wins, and game history",
+        "Court Management — Create and manage multiple courts for singles or doubles play",
+        "Smart Matchmaking — Auto-draft balanced teams with skill-level matching and fair rotation",
+        "RSVP & Scheduling — Share sessions via QR code, let players RSVP with configurable max slots",
+        "Live Dashboard — Real-time stats on players in game, in queue, on bench, and court availability",
+        "Analytics & Leaderboards — Player performance tracking, match history, and session analytics",
+        "Tournament Mode — Organize and run tournaments with bracket management",
       ],
-      liveUrl: "https://badminton.michaelquieta.com",
+      liveUrl: "https://rallyup.michaelquieta.com",
       playStoreUrl:
         "https://drive.google.com/drive/folders/1zDuPpaihPyfcMaOKGNdFEhN7zdz1x-Us?usp=sharing",
       githubUrl: "https://github.com/mjbquieta/badminton-mobile-app",
@@ -87,6 +91,16 @@ const projects = ref(
 );
 
 const hoveredProject = ref<string | null>(null);
+const expandedProjects = ref<Set<string>>(new Set());
+const MAX_HIGHLIGHTS = 3;
+
+const toggleExpanded = (id: string) => {
+  if (expandedProjects.value.has(id)) {
+    expandedProjects.value.delete(id);
+  } else {
+    expandedProjects.value.add(id);
+  }
+};
 
 const getCategoryColor = (category: string): string => {
   const colors: Record<string, string> = {
@@ -228,7 +242,12 @@ const getCategoryColor = (category: string): string => {
 
             <!-- Highlights -->
             <ul class="project-highlights">
-              <li v-for="highlight in project.highlights" :key="highlight">
+              <li
+                v-for="highlight in expandedProjects.has(project.id)
+                  ? project.highlights
+                  : project.highlights.slice(0, MAX_HIGHLIGHTS)"
+                :key="highlight"
+              >
                 <span class="highlight-icon">
                   <svg
                     width="14"
@@ -244,6 +263,29 @@ const getCategoryColor = (category: string): string => {
                 {{ highlight }}
               </li>
             </ul>
+            <button
+              v-if="project.highlights.length > MAX_HIGHLIGHTS"
+              class="see-more-btn"
+              @click="toggleExpanded(project.id)"
+            >
+              {{
+                expandedProjects.has(project.id)
+                  ? "See less"
+                  : `See ${project.highlights.length - MAX_HIGHLIGHTS} more`
+              }}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                :class="{ rotated: expandedProjects.has(project.id) }"
+                class="see-more-icon"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
 
             <!-- Technologies -->
             <div class="project-tech">
@@ -356,6 +398,8 @@ const getCategoryColor = (category: string): string => {
 /* Project Card */
 .project-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
   border-radius: 24px;
@@ -515,6 +559,9 @@ const getCategoryColor = (category: string): string => {
 /* Project Info */
 .project-info {
   padding: 0 1.5rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-title {
@@ -559,11 +606,40 @@ const getCategoryColor = (category: string): string => {
   color: var(--category-color);
 }
 
+/* See More Button */
+.see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0;
+  margin-bottom: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.see-more-btn:hover {
+  opacity: 0.8;
+}
+
+.see-more-icon {
+  transition: transform 0.2s ease;
+}
+
+.see-more-icon.rotated {
+  transform: rotate(180deg);
+}
+
 /* Tech Tags */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: auto;
 }
 
 .tech-tag {
