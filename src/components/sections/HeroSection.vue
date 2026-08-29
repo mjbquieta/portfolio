@@ -60,10 +60,10 @@ onMounted(() => {
 
       <!-- Hero content -->
       <div class="hero-content">
-        <div class="hero-badge">
+        <!-- <div class="hero-badge">
           <span class="badge-dot"></span>
           Available for work
-        </div>
+        </div> -->
 
         <h1 class="hero-title">
           <span class="greeting">Hi, I'm</span>

@@ -35,7 +35,7 @@ const projects = ref(
     {
       title: "RallyUp",
       description:
-        "A court management web app for racket and paddle sports — badminton, pickleball, table tennis, and more. It tracks players and skill levels, automates fair matchmaking, manages court rotations, and provides real-time analytics to keep sessions running smoothly.",
+        "A court management web app for racket and paddle sports like badminton, pickleball, table tennis, and more. It tracks players and skill levels, automates fair matchmaking, manages court rotations, and provides real-time analytics to keep sessions running smoothly.",
       technologies: [
         "TypeScript",
         "React 19",
@@ -49,13 +49,13 @@ const projects = ref(
       category: "Web",
       featured: true,
       highlights: [
-        "Player Management — Add players with skill levels (Beginner → Pro), track stats, wins, and game history",
-        "Court Management — Create and manage multiple courts for singles or doubles play",
-        "Smart Matchmaking — Auto-draft balanced teams with skill-level matching and fair rotation",
-        "RSVP & Scheduling — Share sessions via QR code, let players RSVP with configurable max slots",
-        "Live Dashboard — Real-time stats on players in game, in queue, on bench, and court availability",
-        "Analytics & Leaderboards — Player performance tracking, match history, and session analytics",
-        "Tournament Mode — Organize and run tournaments with bracket management",
+        "Player Management: Add players with skill levels (Beginner → Pro), track stats, wins, and game history",
+        "Court Management: Create and manage multiple courts for singles or doubles play",
+        "Smart Matchmaking: Auto-draft balanced teams with skill-level matching and fair rotation",
+        "RSVP & Scheduling: Share sessions via QR code, let players RSVP with configurable max slots",
+        "Live Dashboard: Real-time stats on players in game, in queue, on bench, and court availability",
+        "Analytics & Leaderboards: Player performance tracking, match history, and session analytics",
+        "Tournament Mode: Organize and run tournaments with bracket management",
       ],
       liveUrl: "https://rallyup.michaelquieta.com",
       playStoreUrl:
@@ -65,7 +65,7 @@ const projects = ref(
     {
       title: "Timely",
       description:
-        "Timely connects to your biometric devices fingerprint scanners, face recognition, and RFID readers to automatically track when employees clock in and out.",
+        "A workforce time tracking platform with web and mobile apps. Timely connects to biometric devices like fingerprint scanners, face recognition, and RFID readers to automatically track when employees clock in and out. The mobile app lets users clock in/out on the go and view reports, with Face + Location Time In that combines a face scan and live GPS in one punch to confirm identity and location.",
       technologies: [
         "NestJS",
         "PostgreSQL",
@@ -73,19 +73,22 @@ const projects = ref(
         "Nuxt",
         "Docker",
         "Nginx",
+        "React Native`",
       ],
       image: "/images/timely.png",
       category: "WEB APP",
       featured: true,
       highlights: [
-        "Secure biometric authentication ensures only the right person clocks in. No more buddy punching.",
-        "Just show your face and you're clocked in. Fast, contactless, and incredibly accurate.",
-        "Tap your card and go. Simple, reliable, and perfect for high-traffic workplaces.",
-        "See who's at work right now. Track patterns, identify issues, and make informed decisions.",
+        "Mobile App: Clock in/out from anywhere and view attendance reports on the go.",
+        "Face + Location Time In: A face scan and live GPS land on one punch to confirm identity and location instantly.",
+        "Geofencing: Set allowed clock-in zones so punches only count when employees are on-site.",
+        "Biometric Authentication: Fingerprint, face recognition, and RFID. No more buddy punching.",
+        "Real-Time Dashboard: See who's at work right now, track patterns, and make informed decisions.",
       ],
       liveUrl: "https://timelyph.com",
       playStoreUrl: null,
-      githubUrl: "https://github.com/mjbquieta/timely",
+      // githubUrl: "https://github.com/mjbquieta/timely",
+      githubUrl: null,
     },
   ].map((project) => ({ id: crypto.randomUUID(), ...project })),
 );
